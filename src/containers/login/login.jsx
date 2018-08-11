@@ -1,4 +1,5 @@
-import React, { Component } from 'react'; // 引入了React
+import React, { Component  } from 'react'; // 引入了React
+import ReactDOM from 'react-dom'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { is, fromJS } from 'immutable';
@@ -23,9 +24,12 @@ class Login extends Component {
     /**
      * 在初始化渲染执行之后立刻调用一次，仅客户端有效（服务器端不会调用）。
      * 在生命周期中的这个时间点，组件拥有一个 DOM 展现，
-     * 你可以通过 this.getDOMNode() 来获取相应 DOM 节点。
+     * 你可以通过 this.getDOMNode() 来获取相应 DOM 节点。(在React0.14后，getDOMNode（）已经被移除)
+	 * 可使用 ReactDOM.findDOMNode(this)来获取节点
      */
     componentDidMount() { 
+		console.log('%cReactDOM.findDOMNode(this) :','color:orange',ReactDOM.findDOMNode(this));
+		console.log('%cthis.props component inner:','color:orange',this.props)
         const {actions} = this.props;
         // 初始化数据
         actions.initialState();
@@ -47,7 +51,9 @@ class Login extends Component {
 	}
 	// 验证用户名
 	checkUsername = (rule, value, callback) => {
+		// console.log("%ccallback :",'color:orange',callback)
 		const form = this.props.form;
+		console.log('%cform :','color:orange',value)
         if (!value) {
             callback();
         } else if (!Config.checkEng(value)) {
@@ -59,6 +65,7 @@ class Login extends Component {
 	// 验证密码
 	checkPassword = (rule, value, callback) => {
 		const form = this.props.form;
+		console.log(this.state)
 	    if (value && this.state.passwordDirty) {
 	    	form.validateFields(['confirm'], { force: true });
 	    }
@@ -105,6 +112,9 @@ const LoginForm = Form.create()(Login);
 
 // 将 store 中的数据作为 props 绑定到 LoginForm 上
 const mapStateToProps = (state, ownProps) => {
+	console.log('%cstate :','color:orange',state);
+	console.log('%ccomponent ownProps :','color:orange',ownProps);
+	
     let { Common, Login } = state;
     return {
         loading: Common.loading,

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { is, fromJS } from 'immutable';
 import Config from '../../config/index';
 
+
 // 公共头部
 import { Lheader } from './lheader';
 // 公共菜单

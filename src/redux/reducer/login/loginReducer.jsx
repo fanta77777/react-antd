@@ -3,7 +3,10 @@ import { INITIAL_STATE, RES_LOGIN } from '../../constants/loginTypes';
 
 // 初始化state数据
 const initialState = {
-    loginInfo: []
+    loginInfo: [],
+    fuck:{
+        'fox':'god'
+    }
 };
 
 /**
