@@ -1,24 +1,22 @@
 import React, {Component, PropTypes} from 'react'; // 引入了React和PropTypes
 import {connect} from 'react-redux';
 import {is, fromJS} from 'immutable';
-import MyComponent from '../test/MyComponent'
 
 /* 以类的方式创建一个组件 */
 class Main extends Component {
-    constructor(props) {
-        super(props);
-    }
-    shouldComponentUpdate(nextProps, nextState) {
-        return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state), fromJS(nextState))
-    }
-    render() {
-        return (
-            <div>
-                系统设置
-                <MyComponent/>
-            </div>
-        );
-    }
+  constructor(props) {
+    super(props);
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state), fromJS(nextState))
+  }
+  render() {
+    return (
+      <div>
+        系统设置
+      </div>
+    );
+  }
 }
 
 Main.contextTypes = {};

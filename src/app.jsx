@@ -11,9 +11,9 @@ import 'babel-polyfill';
 import './style/common.less';
 
 store.subscribe(() => {
-    // 监听state变化 console.log(store.getState());
+  // 监听state变化 console.log(store.getState());
 });
 
 //创建根组件
 render(
-    <Provider store={store}>{route}</Provider>, document.body.appendChild(document.createElement('div')));
+  <Provider store={store}>{route}</Provider>, document.body.appendChild(document.createElement('div')));
